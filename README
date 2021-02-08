@@ -6,14 +6,60 @@ Dalam membuat codingan pelatihan dan implementasi YOLOv4 pada python, saya mengg
 
 Untuk implementasi repository ini, terdapat 3 modul utama :
 1- Modul Implementasi YOLOv4 tiny pada Raspberry Pi 4
-2- setup database pada Firebase
+2- setup database pada Firebase dan onesignal (onesignal untuk memberikan push notification pada aplikasi android)
 3- Aplikasi Android untuk monitoring status deteksi
+
 
 1- Modul Implementasi YOLOv4 Tiny pada Raspberry Pi 4
 -Untuk implementasikan source code pada repository ini, digunakan python 3.6 dengan tensorflow 2.3.1 dan opencv 3.4.3. Untuk lebih jelasnya, tutorial dalam melakukan setup raspberry pi untuk deteksi objek menggunakan YOLO dapat dilihat pada alamat url : https://pylessons.com/YOLOv3-TF2-RaspberryPi/
 -Untuk menjalankan program deteksi object, sebelumnya perlu dipenuhi kriteria library yang dibutuhkan, yang mana sebagian terdapat pada file requirements.txt, hal ini dapat dicapai dengan menjalankan perintah pip3 install -r requrements.txt. Jika masih terdapat library yang kurang, silahkan jalankan perintah pip untuk menginstall library tersebut.
--setelah semua setup dan kebutuhan library terpenuhi, maka selanjutnya dilakukan setup database firebase dan firebase storage. untuk tutorial setup database firebase dapat dicoba searching pada mesin pencari.
+-Untuk melihat jalannya program deteksi objek senjata dan monitoring deteksi dan aplikasi android dari database yang saya rancang pada penelitian, dapat dicoba dengan :
+a) menginstall aplikasi android pada smartphone, apk aplikasi android dapat dilihat pada file android
+b) menjalankan program utama dengan filename : detect_video_final.py
 
-2- Setup database pada firebase
--untuk setup firebase, buka program utama dengan filename : detect_video_final.py
--
+-jika tidak terdapat error, maka akan tampil pop up opencv yang menampilkan tampilan kamera secara realtime dan melakukan deteksi objek senjata. Dalam implementasinya pada Raspberry Pi 4, didapatkan fps rata-rata sebesar 1.53 fps. saat dicoba pada laptop core i3 dengan ram 4GB dan GPU Nvidia920x, didapat fps rata-rata 6-7 fps
+-setelah pindah ke aplikasi android, saat pertama kali menginstall maka akan ditampilkan menu login dengan user ID. untuk percobaan, dapat login dengan akun user ID : 19980989
+-setelah berhasil login, klik tombol kamera untuk masuk ke status deteksi secara realtime, yang akan menampilkan status senjata yang terdeteksi, level ancaman, letek kamera, dan streaming dari kamera
+-untuk streaming dari kamera, hanya dapat berjalan pada jaringan LAN karena konfigurasi dari database firebase. saat program detect_video_final.py dijalankan, maka akan diupdate nilai ip raspberry pi ke database firebase untuk steraming kamera.
+-untuk streaming secara online melalui jaringan internet, dapat menggunakan utilisasi ngrok yang melakukan hosting langsung dari end user.
+
+
+
+-jika akan melakukan setup database baru dan sistem push notification baru, maka setelah semua setup dan kebutuhan library terpenuhi, selanjutnya dilakukan setup database firebase dan firebase storage. untuk tutorial setup project database firebase dapat dicoba searching pada mesin pencari.
+
+2- Setup database pada firebase dan onesignal
+-setelah konfigurasi user dan project pada database selesai dilakukan selanjutnya buka program utama dengan filename : detect_video_final.py
+pada bagian :
+cred = credentials.Certificate("firefly-201c1-firebase-adminsdk-o0fuq-7f9a73e44b.json")
+firebase_admin.initialize_app(cred, {
+    'storageBucket': 'firefly-201c1.appspot.com'
+    })
+ubah variabel "firefly-201c1-firebase-adminsdk-o0fuq-7f9a73e44b.json" ke project .json yang disetup pada firebase
+
+selanjutnya pada bagian :
+firebase = firebase.FirebaseApplication('https://firefly-201c1.firebaseio.com', None)
+ubah alamat 'https://firefly-201c1.firebaseio.com' menjadi alamat pada realtime database firebase yang disetup.
+
+-setelah konfigurasi pada firebase selesai, maka beralih ke konfigurasi onesignal untuk dapat mengirimkan notifikasi peringatan ke aplikasi android
+untuk konfiguasi pada onesignal dapat disetup user dan masukkan app project dari database firebase.
+selanjutnya setup app id pada rogram utama dengan filename : detect_video_final.py pada bagian 
+def send_push(threat_lvl, knife_counter, gun_counter):
+    str_push = "Camera 1 Alert : Status " + str(threat_lvl) + ", " + str(knife_counter) + " Knife Detected, " + str(gun_counter) + " Gun Detected"
+    notification_body = {
+        'headings': {'en': 'Ancaman Terdeteksi'},
+        'contents': {'en': str_push},
+        'included_segments': ['Active Users']
+        }
+    APP_ID = "f8b1faca-8836-4a99-a057-18c8216fc37b"
+    REST_API_KEY = "MjYxYzkxYjktN2VhNS00ZGFlLTkzZTktOTM0MzllYzVjZmU5"
+    USER_AUTH_KEY = "ODFkZDBlMjctZjQ3OC00ZDAyLTlhY2EtYTI3NjFiYjgzMDkx"
+    client1 = Client(app_id=APP_ID, rest_api_key=REST_API_KEY, user_auth_key=USER_AUTH_KEY)
+    response1 = client1.send_notification(notification_body)
+    
+ dari fungsi def send_push diatas, updata nilai APP_ID, REST_API_KEY, dan USER_AUTH_KEY sesuai setupa pada onesignal.
+ 
+ 3-Aplikasi android
+ dalam perancangan aplikasi android, digunakan app inventor kodular.io yang rancangan aplikasinya dalam filename project kodular dapat dilihat pada filename :
+ selanjutnya update api key pada setup database firebase dan api key dari onesignal, selanjutnya export aplikasi ke apk dan install aplikasi. saat aplikasi diinstall maka user akan ditambahkan ke onesignal.
+
+
