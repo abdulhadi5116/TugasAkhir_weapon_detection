@@ -1,1 +1,19 @@
-sfsdfsdfsdfsdfsfsdsfdfsdfs
+Ini adalah repository Tugas Akhir Sarjana saya dari Jurusan Teknik Komputer dengan judul : KLASIFIKASI TINGKAT ANCAMAN KRIMINALITAS BERSENJATA MENGGUNAKAN METODE YOLO.
+
+Dalam penelitian ini, saya menerapkan YOLOv4 Tiny pada raspberry Pi 4 yang dilatih pada google collab untuk mendeteksi adanya objek senjata pistol dan pisau. Saat terdeteksi adanya senjata, sistem akan mengirim notifikasi ke aplikasi android melalui database firebase. Notifikasi yang dikirim yaitu status deteksi berupa jumlah masing-masing kelas senjata dan level ancaman (1-Normal, 2-Sedang, 3-Kritis).
+Melalui repositoy ini, saya mengupload file-file source code aplikasi python pada Raspberry Pi 4 dan source code untuk proyek aplikasi android yang saya rancang. Secara garis besar rancangan sistem dapat dilihat pada laporan tugas akhir saya pada link :
+Dalam membuat codingan pelatihan dan implementasi YOLOv4 pada python, saya menggunakan referensi repository github dari theAIGuysCode dalam penerapan YOLO dan fungsi-fungsi untuk menghitung jumlah objek pada setiap kelas. Walaupun konteks penelitian yang saya lakukan berbeda, namun logika dasar penerapan YOLO yang saya kembangkan merujuk banyak pada tutorial dari sumber repository tersebut. link untuk tutorial dan implementasi YOLOv4 dari the AIGuysCode dapat dilihat pada pada alamat url : https://github.com/theAIGuysCode/yolov4-custom-functions
+
+Untuk implementasi repository ini, terdapat 3 modul utama :
+1- Modul Implementasi YOLOv4 tiny pada Raspberry Pi 4
+2- setup database pada Firebase
+3- Aplikasi Android untuk monitoring status deteksi
+
+1- Modul Implementasi YOLOv4 Tiny pada Raspberry Pi 4
+-Untuk implementasikan source code pada repository ini, digunakan python 3.6 dengan tensorflow 2.3.1 dan opencv 3.4.3. Untuk lebih jelasnya, tutorial dalam melakukan setup raspberry pi untuk deteksi objek menggunakan YOLO dapat dilihat pada alamat url : https://pylessons.com/YOLOv3-TF2-RaspberryPi/
+-Untuk menjalankan program deteksi object, sebelumnya perlu dipenuhi kriteria library yang dibutuhkan, yang mana sebagian terdapat pada file requirements.txt, hal ini dapat dicapai dengan menjalankan perintah pip3 install -r requrements.txt. Jika masih terdapat library yang kurang, silahkan jalankan perintah pip untuk menginstall library tersebut.
+-setelah semua setup dan kebutuhan library terpenuhi, maka selanjutnya dilakukan setup database firebase dan firebase storage. untuk tutorial setup database firebase dapat dicoba searching pada mesin pencari.
+
+2- Setup database pada firebase
+-untuk setup firebase, buka program utama dengan filename : detect_video_final.py
+-
