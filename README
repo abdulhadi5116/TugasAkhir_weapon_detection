@@ -14,7 +14,7 @@ Untuk implementasi repository ini, terdapat 3 modul utama :
 -Untuk implementasikan source code pada repository ini, digunakan python 3.6 dengan tensorflow 2.3.1 dan opencv 3.4.3. Untuk lebih jelasnya, tutorial dalam melakukan setup raspberry pi untuk deteksi objek menggunakan YOLO dapat dilihat pada alamat url : https://pylessons.com/YOLOv3-TF2-RaspberryPi/
 -Untuk menjalankan program deteksi object, sebelumnya perlu dipenuhi kriteria library yang dibutuhkan, yang mana sebagian terdapat pada file requirements.txt, hal ini dapat dicapai dengan menjalankan perintah pip3 install -r requrements.txt. Jika masih terdapat library yang kurang, silahkan jalankan perintah pip untuk menginstall library tersebut.
 -Untuk melihat jalannya program deteksi objek senjata dan monitoring deteksi dan aplikasi android dari database yang saya rancang pada penelitian, dapat dicoba dengan :
-a) menginstall aplikasi android pada smartphone, apk aplikasi android dapat dilihat pada file android
+a) menginstall aplikasi android pada smartphone, apk aplikasi android dapat dilihat pada file androidAPP/Final_App_checkpoint7_DONE100over100.apk
 b) menjalankan program utama dengan filename : detect_video_final.py
 
 -jika tidak terdapat error, maka akan tampil pop up opencv yang menampilkan tampilan kamera secara realtime dan melakukan deteksi objek senjata. Dalam implementasinya pada Raspberry Pi 4, didapatkan fps rata-rata sebesar 1.53 fps. saat dicoba pada laptop core i3 dengan ram 4GB dan GPU Nvidia920x, didapat fps rata-rata 6-7 fps
@@ -59,7 +59,7 @@ def send_push(threat_lvl, knife_counter, gun_counter):
  dari fungsi def send_push diatas, updata nilai APP_ID, REST_API_KEY, dan USER_AUTH_KEY sesuai setupa pada onesignal.
  
  3-Aplikasi android
- dalam perancangan aplikasi android, digunakan app inventor kodular.io yang rancangan aplikasinya dalam filename project kodular dapat dilihat pada filename :
+ dalam perancangan aplikasi android, digunakan app inventor kodular.io yang rancangan aplikasinya dalam filename project kodular dapat dilihat pada filename : androidAPP/Final_App_checkpoint7_DONE100over100.aia
  selanjutnya update api key pada setup database firebase dan api key dari onesignal, selanjutnya export aplikasi ke apk dan install aplikasi. saat aplikasi diinstall maka user akan ditambahkan ke onesignal.
 
 
