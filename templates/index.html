@@ -1,0 +1,61 @@
+
+
+    <!DOCTYPE html>
+
+    <html lang="en">
+
+    <head>
+
+    <meta charset="utf-8">
+
+    <title>Camera 1</title>
+
+    <style>
+
+        img{
+
+            max-width: 100%;
+
+            max-height: 100%;
+
+            display: block; /* remove extra space below image */
+
+        }
+
+        .box{
+        
+
+            border: 5px solid black;
+
+        }    
+
+        .box.large{
+
+            height: 300px;
+
+        }
+
+        .box.small{
+
+            height: 100px;
+
+        }
+
+    </style>
+
+    </head>
+
+    <body>
+
+        <h2>Camera 1</h2>
+
+        <div class="box">
+
+            <img src="{{ url_for('video_feed') }}" alt="Cloudy Sky">
+
+        </div>
+
+    </body>
+
+    </html>
+
