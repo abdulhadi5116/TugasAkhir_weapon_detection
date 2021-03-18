@@ -50,7 +50,7 @@ flags.DEFINE_string('weights', './checkpoints/yolov4-416-tiny', 'path to weights
 flags.DEFINE_integer('size', 416, 'resize images to')
 flags.DEFINE_boolean('tiny', True, 'yolo or yolo-tiny')
 flags.DEFINE_string('model', 'yolov4', 'yolov3 or yolov4')
-flags.DEFINE_string('video', './video_input/WIN_20201217_19_51_59_Pro.mp4', 'path to input video or set to 0 for webcam')
+flags.DEFINE_string('video', '0', 'path to input video or set to 0 for webcam')
 flags.DEFINE_string('output', None, 'path to output video')
 flags.DEFINE_string('output_format', 'XVID', 'codec used in VideoWriter when saving video to file')
 flags.DEFINE_float('iou', 0.45, 'iou threshold')
