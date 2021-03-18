@@ -1,3 +1,20 @@
+Quick Run v1 (run with data connection)
+summary : run yolov4-tiny detection, if weapon detected send notification to android and update data to database firebase, and send stream to android app (only works on LAN for streaming, but you can update ip with ngrok to stream externally through internet) using flask_opencv_streamer, add more delay when processing.
+1. open Raspberry Pi terminal
+2. cd /home/pi/TA_weapon_detection_1611512012
+3. install apk android in folder "/home/pi/TA_weapon_detection_1611512012/androidAPP" filename : Final_App_checkpoint7_DONE100over100.apk
+4. run command "python3 detect_video_final.py"
+
+Quick run v2 (run without data_connection (localhost only)
+summary : run yolov4-tiny detection, if weapon detected the output is on terminal only, no database connection or android app required, means less delay in fps and processing
+1. open Raspberry Pi terminal
+2. cd /home/pi/TA_weapon_detection_1611512012
+3. run command "python3 detect_video_v3_final_no_stream_no_db_save_file_video.py"
+
+
+
+
+
 Ini adalah repository Tugas Akhir Sarjana saya dari Jurusan Teknik Komputer dengan judul : KLASIFIKASI TINGKAT ANCAMAN KRIMINALITAS BERSENJATA MENGGUNAKAN METODE YOLO.
 
 Dalam penelitian ini, saya menerapkan YOLOv4 Tiny pada raspberry Pi 4 yang dilatih pada google collab untuk mendeteksi adanya objek senjata pistol dan pisau. Saat terdeteksi adanya senjata, sistem akan mengirim notifikasi ke aplikasi android melalui database firebase. Notifikasi yang dikirim yaitu status deteksi berupa jumlah masing-masing kelas senjata dan level ancaman (1-Normal, 2-Sedang, 3-Kritis).
