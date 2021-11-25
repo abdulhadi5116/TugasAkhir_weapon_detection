@@ -67,9 +67,9 @@ def send_push(threat_lvl, knife_counter, gun_counter):
         'contents': {'en': str_push},
         'included_segments': ['Active Users']
         }
-    APP_ID = "f8b1faca-8836-4a99-a057-18c8216fc37b"
-    REST_API_KEY = "MjYxYzkxYjktN2VhNS00ZGFlLTkzZTktOTM0MzllYzVjZmU5"
-    USER_AUTH_KEY = "ODFkZDBlMjctZjQ3OC00ZDAyLTlhY2EtYTI3NjFiYjgzMDkx"
+    APP_ID = {APP_ID}
+    REST_API_KEY = {REST_API_KEY}
+    USER_AUTH_KEY = {USER_AUTH_KEY}
     client1 = Client(app_id=APP_ID, rest_api_key=REST_API_KEY, user_auth_key=USER_AUTH_KEY)
     response1 = client1.send_notification(notification_body)
     
