@@ -45,19 +45,8 @@ b) menjalankan program utama dengan filename : detect_video_final.py
 -jika akan melakukan setup database baru dan sistem push notification baru, maka setelah semua setup dan kebutuhan library terpenuhi, selanjutnya dilakukan setup database firebase dan firebase storage. untuk tutorial setup project database firebase dapat dicoba searching pada mesin pencari.
 
 2- Setup database pada firebase dan onesignal
--setelah konfigurasi user dan project pada database selesai dilakukan selanjutnya buka program utama dengan filename : detect_video_final.py
-pada bagian :
-cred = credentials.Certificate("firefly-201c1-firebase-adminsdk-o0fuq-7f9a73e44b.json")
-firebase_admin.initialize_app(cred, {
-    'storageBucket': 'firefly-201c1.appspot.com'
-    })
-ubah variabel "firefly-201c1-firebase-adminsdk-o0fuq-7f9a73e44b.json" ke project .json yang disetup pada firebase
 
-selanjutnya pada bagian :
-firebase = firebase.FirebaseApplication('https://firefly-201c1.firebaseio.com', None)
-ubah alamat 'https://firefly-201c1.firebaseio.com' menjadi alamat pada realtime database firebase yang disetup.
-
--setelah konfigurasi pada firebase selesai, maka beralih ke konfigurasi onesignal untuk dapat mengirimkan notifikasi peringatan ke aplikasi android
+3-setelah konfigurasi pada firebase selesai, maka beralih ke konfigurasi onesignal untuk dapat mengirimkan notifikasi peringatan ke aplikasi android
 untuk konfiguasi pada onesignal dapat disetup user dan masukkan app project dari database firebase.
 selanjutnya setup app id pada rogram utama dengan filename : detect_video_final.py pada bagian 
 def send_push(threat_lvl, knife_counter, gun_counter):
@@ -75,7 +64,7 @@ def send_push(threat_lvl, knife_counter, gun_counter):
     
  dari fungsi def send_push diatas, updata nilai APP_ID, REST_API_KEY, dan USER_AUTH_KEY sesuai setupa pada onesignal.
  
- 3-Aplikasi android
+ 4-Aplikasi android
  dalam perancangan aplikasi android, digunakan app inventor kodular.io yang rancangan aplikasinya dalam filename project kodular dapat dilihat pada filename : androidAPP/Final_App_checkpoint7_DONE100over100.aia
  selanjutnya update api key pada setup database firebase dan api key dari onesignal, selanjutnya export aplikasi ke apk dan install aplikasi. saat aplikasi diinstall maka user akan ditambahkan ke onesignal.
 
